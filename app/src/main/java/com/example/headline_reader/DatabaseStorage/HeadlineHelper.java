@@ -5,4 +5,5 @@ package com.example.headline_reader.DatabaseStorage;
  */
 
 public class HeadlineHelper {
+
 }
