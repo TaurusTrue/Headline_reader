@@ -4,6 +4,14 @@ package com.example.headline_reader.Date;
  * Created by 67698 on 2018/4/9.
  */
 
+
+
+/**
+ * doc型文章
+ * thumnail:缩略图
+ * source:来源
+ * id:这里的id是以staticid做的id
+ */
 public class DocArticle {
     private String thumbnail="";
     private String title="";
