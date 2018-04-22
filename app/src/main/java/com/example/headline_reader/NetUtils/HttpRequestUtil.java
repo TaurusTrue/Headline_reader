@@ -11,13 +11,16 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import javax.net.ssl.HttpsURLConnection;
+
 /**
  * Created by Taurus on 2018/4/18.
  * 网络请求工具类
  */
 
 public class HttpRequestUtil {
-    public static void sendHttpRequest(final String address, final String param, final HttpCallbackListener listener) {
+    public static String param = "http://api.irecommend.ifeng.com/irecommendList.php?userId=866048024885909&count=6&gv=5.2.6&av=5.2.6&uid=866048024885909&deviceid=866048024885909&proid=ifengnews&os=android_23&df=androidphone&vt=5&screen=720x1280&publishid=2024&nw=wifi";
+    public static void sendHttpRequest(final String address,final HttpCallbackListener listener) {
         final Handler handler = new Handler();
         new Thread(new Runnable() {
             @Override
@@ -26,19 +29,10 @@ public class HttpRequestUtil {
                 try {
                     URL url = new URL(address);
                     connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
                     connection.setConnectTimeout(8000);
                     connection.setReadTimeout(8000);
                     connection.setDoInput(true);
-                    if (param == null) {
-                        connection.setRequestMethod("POST");
-                        connection.setDoOutput(true);
-                        OutputStream os = connection.getOutputStream();
-                        os.write(param.getBytes());
-                        os.flush();
-                        os.close();
-                    }else{
-                        connection.setRequestMethod("GET");
-                    }
                     if (listener != null) {
                         final byte[] temp = read(connection.getInputStream());
                         handler.post(new Runnable() {

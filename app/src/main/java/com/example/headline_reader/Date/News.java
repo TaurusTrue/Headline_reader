@@ -22,8 +22,8 @@ public class News {
         return imageUrl;
     }
 
-    public void setImageUrl(String mImageUrl) {
-        this.imageUrl = mImageUrl;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getNewsTitle() {
